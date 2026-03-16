@@ -22,7 +22,8 @@
 }
 
 %bloc { 
-
+    width: 100%;
+    height: fit-content;
     border-radius: 16px ;
     display: flex;
     flex-direction: column;

@@ -1,0 +1,37 @@
+.navigation__container{
+
+
+  grid-column: 1 / -1;
+
+  @extend %bloc ;
+
+}
+
+.navigation{
+
+  padding: 0;
+  display: grid;
+  gap: 8px;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: repeat(6, fit-content);
+
+  &__element{
+    background-color: $lightGray;
+
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+    height: fit-content;
+    padding: 2px 8px;
+
+    list-style: none;
+
+    p{
+      margin: 12px 0;
+      display: inline-block;
+    }
+  }
+
+}

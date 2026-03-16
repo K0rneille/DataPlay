@@ -1,10 +1,30 @@
 body {
-  font-family: sans-serif;
-  font-size: $size-text;
+  font-family: $primaryfont;
+  font-size: $rem;
   line-height: 1.5;
-  color: $c-text;
 }
 
-.title {
-  color: $c-alt;
+
+p {
+  font-size: remscale(1);
+} 
+
+
+h1{
+  @include font-title(primary, 6);
+  text-indent: 100%;
+  text-wrap: unset;
+  overflow: hidden;
+  width: 100px ;
+  height: 100px;
+  position: absolute;
 }
+
+h2{
+  @include font-title(mono, 1);
+}
+
+h3{
+  @include font-title(primary, 4);
+}
+

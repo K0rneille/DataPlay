@@ -21,7 +21,7 @@
     font-weight:700 ;
 }
 
-%bloc {
+%bloc { 
 
     border-radius: 16px ;
     display: flex;
@@ -41,4 +41,17 @@
 
     }
 
+}
+
+
+@mixin font-title ($type, $size){
+
+    font-size: remscale($size);
+
+    @if $type == mono {
+        font-family: $monotypefont;
+
+    } @else {
+        font-family: $primaryfont;
+    }
 }

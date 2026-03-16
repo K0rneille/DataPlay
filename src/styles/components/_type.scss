@@ -6,8 +6,25 @@ body {
 
 
 p {
-  font-size: remscale(0);
-  @extend %bloc;
+  font-size: remscale(1);
 } 
 
+
+h1{
+  @include font-title(primary, 6);
+  text-indent: 100%;
+  text-wrap: unset;
+  overflow: hidden;
+  width: 100px ;
+  height: 100px;
+  position: absolute;
+}
+
+h2{
+  @include font-title(mono, 1);
+}
+
+h3{
+  @include font-title(primary, 4);
+}
 

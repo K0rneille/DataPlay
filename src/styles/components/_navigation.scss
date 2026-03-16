@@ -15,6 +15,12 @@
   grid-template-columns: 1fr 1fr;
   grid-template-rows: repeat(6, fit-content);
 
+
+
+  li{
+    list-style: none;
+  }
+
   &__element{
     background-color: $lightGray;
 
@@ -25,13 +31,26 @@
     width: 100%;
     height: fit-content;
     padding: 2px 8px;
+    z-index: 2;
 
-    list-style: none;
+    border: none;
 
     p{
+      z-index: 0;
       margin: 12px 0;
       display: inline-block;
+
     }
   }
+
+    .navigation__element--active{
+      background: $white;
+      transition: 0.4s all ease;
+      
+       p {color:$darkGray;}
+    }
+
+
+
 
 }

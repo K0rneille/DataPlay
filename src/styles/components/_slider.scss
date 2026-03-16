@@ -1,0 +1,25 @@
+.slider__container{
+  padding: 8px 0;
+  grid-column: 1 / -1;
+}
+
+.slider {
+  color: $white;
+  border: none;
+  appearance: none;
+  width: 100%; 
+  height: 25px; 
+  background: $darkGray;
+  outline: none; 
+  opacity: 0.7; 
+  transition: opacity .2s;
+}
+
+.slider::-webkit-slider-thumb,.slider::-moz-range-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 25px; 
+  height: 25px; 
+  background-color: $white ;
+  cursor: pointer;
+}

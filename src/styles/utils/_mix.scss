@@ -35,6 +35,10 @@
     padding : $padding_mobile;
     gap: $padding_mobile;
 
+    p{
+        margin: 0;
+    }
+
     @media (min-width : 1200px) {
 
         padding : $padding_desktop;

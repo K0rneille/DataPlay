@@ -1,0 +1,4 @@
+.sectionTexte{
+  @extend %bloc ;
+  grid-column: 1 / -1;
+}

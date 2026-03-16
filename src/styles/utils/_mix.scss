@@ -1,0 +1,44 @@
+@function remscale($size){
+
+    @if $size == 1{
+        @return $rem;
+    }
+
+    @if $size == 0{
+        @return $rem / $rem_scale;
+    }
+
+    @else{
+        @return $rem * ($rem_scale * ($size - 1 ));
+    }
+
+}
+
+
+
+@mixin bigtext ($size) {
+    font-size: remscale($size);
+    font-weight:700 ;
+}
+
+%bloc {
+
+    border-radius: 16px ;
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+
+    background-color: $darkGray;
+    color: $white ;    
+
+    padding : $padding_mobile;
+    gap: $padding_mobile;
+
+    @media (min-width : 1200px) {
+
+        padding : $padding_desktop;
+        gap: $padding_desktop;
+
+    }
+
+}

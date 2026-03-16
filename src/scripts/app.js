@@ -1,10 +1,14 @@
 //fetch et console log 
 
 
-fetch('/src/data.json')
+fetch('../assets/data.json')
     .then((response) =>{
         return response.json()
     })
     .then((data) => {
-        console.log(data)
+        data.forEach(element => {  
+            for (let key in element){
+                console.log(key, element[key])
+            }
+        });
     })

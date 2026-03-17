@@ -1,0 +1,57 @@
+.navigation__container{
+
+
+  grid-column: 1 / -1;
+
+  @extend %bloc ;
+
+}
+
+.navigation{
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 8px;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: repeat(6, fit-content);
+
+
+
+  li{
+    list-style: none;
+  }
+
+  &__element{
+    background-color: $lightGray;
+
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+    height: fit-content;
+    padding: 2px 8px;
+    z-index: 2;
+    transition: 0.4s all ease;
+    border: none;
+
+    p{
+      z-index: 0;
+      margin: 12px 0;
+      display: inline-block;
+      color: $white;
+      pointer-events: none;
+    }
+  }
+
+    .navigation__element--active{
+      background: $white;
+
+      
+       p {color:$darkGray;}
+    }
+
+
+
+
+}

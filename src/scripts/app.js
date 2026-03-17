@@ -1,14 +1,33 @@
-//fetch et console log 
+//bouton de nav
 
 
-fetch('../assets/data.json')
-    .then((response) =>{
-        return response.json()
-    })
-    .then((data) => {
-        data.forEach(element => {  
-            for (let key in element){
-                console.log(key, element[key])
-            }
-        });
-    })
+const navBtn = document.querySelectorAll('.navigation__element');
+
+
+
+// let i = 0 ; i< navBtn.getLengh()-1 ; i++ {
+
+// }
+
+// navBtn.addEventListener('click',navBtnActive)
+navBtn.forEach(btn => {
+
+    btn.addEventListener('click', navBtnActive );
+    console.log(btn)
+})
+
+
+
+function navBtnActive (event){
+    event.preventDefault()
+    console.log(navBtn)
+    let target = event.target
+    if (target.classList.contains('navigation__element--active')){
+        target.classList.remove('navigation__element--active')
+    }else{
+        console.log('false')
+        target.classList.add('navigation__element--active')
+    }
+}
+
+

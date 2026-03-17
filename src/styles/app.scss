@@ -1,6 +1,17 @@
 @import 'utils/variables';
 @import 'utils/font';
 @import 'utils/mix';
+
+
+* {
+    box-sizing: border-box;
+}
+
+
+
 @import 'components/type';
+@import 'components/navigation';
+@import 'components/sectionTexte';
+@import 'components/slider';
 
 

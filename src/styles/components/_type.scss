@@ -47,10 +47,11 @@ h1{
 }
 
 h2{
+  font-weight: 400;
   @include font-title(mono, 1);
 }
 
 h3{
-  @include font-title(primary, 4);
+  @include font-title(primary, 3);
 }
 

@@ -4,6 +4,7 @@
   height: 200px;
   width: 100%;
   align-content: center;
+  background-color: $colorBg;
 
 }
 
@@ -29,6 +30,7 @@
     p{
       margin: 0;
       height: fit-content;
+        @include font-title(mono, 1);
     }
   }
 

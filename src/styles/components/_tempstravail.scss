@@ -1,0 +1,22 @@
+.temps__travail{
+
+  *{
+    margin: 0
+  }
+  @extend %bloc;
+  grid-column: 1 / -1;
+
+
+  h3{
+    text-align: center;
+  }
+
+
+  &__canva{
+
+    height:200px ;
+    width: 100%;
+    background-color: $white;
+  }
+
+}

@@ -60,3 +60,10 @@
         font-family: $primaryfont;
     }
 }
+
+
+%outofbloc{
+    text-indent: 100%;
+    text-wrap: unset;
+    overflow: hidden;
+}

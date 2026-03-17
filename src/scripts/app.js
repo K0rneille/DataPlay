@@ -19,6 +19,7 @@ navBtn.forEach(btn => {
 
 
 function navBtnActive (event){
+    event.preventDefault()
     console.log(navBtn)
     let target = event.target
     if (target.classList.contains('navigation__element--active')){

@@ -1,0 +1,6 @@
+.backtotop{
+  @extend %bloc;
+  border: none; 
+  font-family: $monotypefont;
+  grid-column: 1 / -1;
+}

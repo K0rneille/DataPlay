@@ -1,6 +1,6 @@
 body {
   color: white;
-  font-family: $primaryfont;
+  font-family: $monotypefont;
   font-size: $rem;
   line-height: 1.5;
   background-color: $colorBg;
@@ -40,18 +40,26 @@ body {
 p {
   font-size: remscale(0);
   font-weight: 400;
+  font-family: $primaryfont;
 } 
 
 
 h1{
   @include font-title(primary, 6);
-  text-indent: 100%;
-  text-wrap: unset;
-  overflow: hidden;
-  width: 100px ;
-  height: 100px;
-  position: absolute;
-}
+  grid-column: 1/-1;
+  margin: 0;
+
+  span{
+    @extend %outofbloc;
+    display: none;
+  }
+
+  
+
+  svg{
+    width: 100%;
+  }
+}   
 
 h2{
   font-weight: 400;
@@ -64,7 +72,7 @@ h3{
 }
 
 strong{
-  @include font-title(primary, 3);
+  @include font-title(mono, 3);
 }
 
 .small{

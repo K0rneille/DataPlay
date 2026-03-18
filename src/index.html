@@ -12,7 +12,7 @@
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@500..700&family=Geist:wght@500..700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@500..700&family=Geist:wght@300..700&display=swap" rel="stylesheet">
 
 
 
@@ -24,8 +24,122 @@
   <script src="scripts/app.js" defer></script>
 </head>
 <body>
-  <h1>bla</h1>
-  <h2>bla</h2>
-  <h3>bla</h3>
+
+  <section class="sectionTexte">
+    <p class="sectionTexte__p">
+      Ce site web a été crée dans le but de montrer les différences entre ces villes ; les différences entre le coût de la vie et le coût de location/achat au centre ville. Nous avons pris comme base le prix du pain, pour le coût de la vie ainsi que le loyer moyen et le prix au m²  au centre ville.
+    </p>
+    <p class="sectionTexte__p">
+      Le Rapport Pain Logement (RPL) est une notation qui permet de montrer le coût de la vie par rapport a la relation du prix d’un loyer moyen avec l’achat d’un pain blanc de 500g. Plus le score est élevé plus l’achat d’un pain blanc de 500g est éloigné du prix du loyer.
+    </p>
+    <p class="sectionTexte__p">
+      RPL = Loyer / (Pain x 10) 
+    </p>
+  </section>
+
+  <section class="navigation__container">
+    <ul class="navigation">
+      <li>
+        <button class="navigation__element">
+          <p>Berlin</p>
+          <p>65.47</p>
+        </button>
+      </li>
+      <li> 
+        <button class="navigation__element">
+          <p>Bratislava</p>
+          <p>77.92</p>
+        </button>
+
+      </li>
+      <li>
+        <button class="navigation__element">
+          <p>Bruxelles</p>
+          <p>47.75</p>
+        </button>
+      </li>
+      <li>
+        <button class="navigation__element">
+          <p>Budapest</p>
+          <p>50.09</p>
+        </button>
+      </li>
+      <li>
+        <button class="navigation__element">
+          <p>Lisbonne</p>
+          <p>85.10</p>
+        </button>
+      </li>
+      <li>
+        <button class="navigation__element">
+          <p>Londre</p>
+          <p>143.44</p>
+        </button>
+      </li>
+      <li>
+        <button class="navigation__element">
+          <p>Monaco</p>
+          <p>276.83</p>
+        </button>
+      </li>
+      <li>
+        <button class="navigation__element">
+          <p>Moscou</p>
+          <p>146.32</p>
+      </button>
+      </li>
+      <li>
+        <button class="navigation__element">
+          <p>Oslo</p>
+          <p>64.82</p>
+        </button>
+      </li>
+      <li>
+        <button class="navigation__element">
+          <p>Paris</p>
+          <p>77.92</p>
+        </button>
+      </li>
+      <li>
+        <button class="navigation__element">
+          <p>Rome</p>
+          <p>64.82</p>
+        </button>
+      </li>
+      <li>
+        <button class="navigation__element">
+          <p>Skopje</p>
+          <p>54.52</p>
+        </button>
+      </li>
+    </ul>
+  </section>
+
+
+
+    <section class="sectionTexte">
+      <p class="sectionTexte__p">
+        Le Rapport Pain Logement (RPL) est une notation qui permet de montrer le coût de la vie par rapport a la relation du prix d’un loyer moyen avec l’achat d’un pain blanc de 500g. Plus le score est élevé plus l’achat d’un pain blanc de 500g est éloigné du prix du loyer.
+      </p>
+    </section>
+
+
+    <section class="slider__container">
+      <div class="slider">
+        <div class="slider__bar">
+            <p>0€</p>
+            <p>10.000€</p>
+          <div class="slider__valor">
+            <div contenteditable="true" class="inputSalary">I</div>
+            <div class="slider__circle">cerlce</div>
+        </div>
+        <input type="range" min="700" max="10000" value="50" class="slider__input" id="myRange">
+
+      </div>
+
+    </section>
+
+
+
 </body>
 </html>

@@ -1,12 +1,38 @@
 body {
+  color: white;
   font-family: $primaryfont;
   font-size: $rem;
   line-height: 1.5;
+  background-color: $colorBg;
+  margin: 0;
+
+
+
+  gap: $padding_mobile;
+  padding: $padding_mobile;
+
+
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: auto;
+
+  @media(min-width:1200px){
+    gap: $padding_desktop;
+    padding: $padding_desktop;
+    grid-template-columns: repeat(6, 1fr);
+  }
+
+  
+
+
+
+  user-select: none;
 }
 
 
 p {
   font-size: remscale(1);
+  font-weight: 400;
 } 
 
 

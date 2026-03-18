@@ -22,7 +22,8 @@
 }
 
 %bloc { 
-
+    width: 100%;
+    height: fit-content;
     border-radius: 16px ;
     display: flex;
     flex-direction: column;
@@ -33,6 +34,10 @@
 
     padding : $padding_mobile;
     gap: $padding_mobile;
+
+    p{
+        margin: 0;
+    }
 
     @media (min-width : 1200px) {
 
@@ -54,4 +59,11 @@
     } @else {
         font-family: $primaryfont;
     }
+}
+
+
+%outofbloc{
+    text-indent: 100%;
+    text-wrap: unset;
+    overflow: hidden;
 }

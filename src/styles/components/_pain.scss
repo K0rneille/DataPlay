@@ -1,0 +1,19 @@
+.schema__pain{
+
+    @extend %bloc;
+  grid-column: 1 / -1;
+
+  &__canva {
+    height:80px ;
+    width: 100%;
+    background-color: $white;
+  }
+
+
+
+  &__text{
+    display: flex;
+  justify-content: space-between;
+  }
+
+}

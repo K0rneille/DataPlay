@@ -38,7 +38,7 @@ body {
 
 
 p {
-  font-size: remscale(1);
+  font-size: remscale(0);
   font-weight: 400;
 } 
 
@@ -55,13 +55,14 @@ h1{
 
 h2{
   font-weight: 400;
-  @include font-title(mono, 1);
+  @include font-title(mono, 0);
+  text-transform: uppercase
 }
 
 h3{
-  @include font-title(primary, 3);
+  @include font-title(mono, 2);
 }
 
 strong{
-  @include font-title(primary, 4);
+  @include font-title(primary, 3);
 }

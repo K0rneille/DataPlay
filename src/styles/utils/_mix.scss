@@ -1,15 +1,18 @@
+@use "sass:math";
+
 @function remscale($size){
 
-    @if $size == 1{
+    @if $size == 0 {
         @return $rem;
     }
 
-    @if $size == 0{
+    @if $size == -1 {
         @return $rem / $rem_scale;
     }
 
     @else{
-        @return $rem * ($rem_scale * ($size - 1 ));
+        
+        @return  math.pow($rem_scale,$size) * $rem ;
     }
 
 }

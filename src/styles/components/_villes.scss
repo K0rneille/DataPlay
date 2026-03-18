@@ -4,8 +4,9 @@
   grid-column: 1 / -1;
 
   &__canva {
-    height:80px ;
+    
     width: 100%;
+    aspect-ratio: 1 / 1;
     background-color: $white;
   }
 
@@ -15,5 +16,36 @@
     display: flex;
   justify-content: space-between;
   }
+
+  &__btns{
+
+    display: flex;
+    flex-direction: row;
+    gap: $rem;
+
+  }
+
+  &__btn{
+    
+  }
+
+  &__legendeCouleur{
+    margin-bottom: 8px;
+    height: 40px;
+    aspect-ratio: 1 / 1;
+
+
+    
+
+    &--1{
+      background: $lightGray;
+    }
+
+    &--2{
+      background: $white;
+    }
+  }
+
+  
 
 }

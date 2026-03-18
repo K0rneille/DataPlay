@@ -66,3 +66,7 @@ h3{
 strong{
   @include font-title(primary, 3);
 }
+
+.small{
+    @include font-title(mono, -1);
+}

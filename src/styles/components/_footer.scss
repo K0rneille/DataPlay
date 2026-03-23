@@ -1,5 +1,10 @@
 .footer{
   grid-column: 1 / -1;
+
+  @media(min-width:840px){
+      grid-row: 7 ;
+      margin-bottom: 0px;
+    }
   @extend %bloc;
   background-color: $lightGray;
 

@@ -3,4 +3,9 @@
   border: none; 
   font-family: $monotypefont;
   grid-column: 1 / -1;
+
+  @media(min-width:840px){
+      
+      grid-row:  6;
+    }
 }

@@ -25,10 +25,10 @@ body {
     gap: $padding_mobile;
     padding: $padding_mobile;
 
-    @media(min-width:1200px){
-      gap: $padding_desktop;
-      padding: $padding_desktop;
-      grid-template-columns: repeat(6, 1fr);
+    @media(min-width:840px){
+      gap: $padding_mobile;
+      padding: $padding_mobile;
+      grid-template-columns: repeat(4, 1fr);
     }
 
       scroll-behavior: smooth;
@@ -53,6 +53,11 @@ h1{
   @include font-title(primary, 6);
   grid-column: 1/-1;
   margin: 0;
+  height: fit-content;
+
+  @media(min-width:840px){
+      grid-row: 8 ;
+    }
 
   span{
     @extend %outofbloc;
@@ -63,6 +68,7 @@ h1{
 
   svg{
     width: 100%;
+    height: 40vw;
   }
 }   
 

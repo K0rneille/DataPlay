@@ -32,8 +32,10 @@
   color: $white;
   text-decoration: none;
       svg{
+      transform: rotate(-45deg);
       fill: $white;
       height: 16px;
       aspect-ratio: 1 / 1;
+      z-index: 0;
     }
 }

@@ -11,6 +11,7 @@
 
 .fixed{
   position: fixed;
+  z-index: 20;
 }
 
 
@@ -20,6 +21,7 @@
   position: relative;
   height: 40px;
   align-content: center; // attention slider pas centré
+  --position :0%;
 }
 
 .slider__texts {
@@ -42,17 +44,8 @@
 }
 
 
-
-.slider__valor{
-
-  position: absolute;
-  top: 0 ;
-  left: 50%;
-  transform: translateX(-50%);
-}
-
 .slider__input {
-  
+
   -webkit-appearance: none;
   appearance: none;
   color: $white;
@@ -68,6 +61,7 @@
   border-radius: 50px;
   opacity: 1;
 }
+
 
 .slider__input::-webkit-slider-thumb {
   appearance: none;
@@ -94,7 +88,7 @@
   position: absolute;
   padding: 8px;
   background-color: $darkGray;
-  left: 50%;
+  left: var(--position);
   top: -53px;
   transform: translateX(-50%);
   border-radius: 8px;

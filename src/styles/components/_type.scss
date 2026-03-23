@@ -1,3 +1,9 @@
+
+html{
+  scroll-behavior: smooth;
+}
+
+
 body {
   color: white;
   font-family: $monotypefont;
@@ -7,9 +13,8 @@ body {
   margin: 0;
 
 
-
   main{
-
+    position: relative;
 
 
     width: 100%;
@@ -26,7 +31,7 @@ body {
       grid-template-columns: repeat(6, 1fr);
     }
 
-  
+      scroll-behavior: smooth;
 
   }
 

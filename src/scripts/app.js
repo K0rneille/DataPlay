@@ -3,17 +3,9 @@
 
 const navBtn = document.querySelectorAll('.navigation__element');
 
-
-
-// let i = 0 ; i< navBtn.getLengh()-1 ; i++ {
-
-// }
-
-// navBtn.addEventListener('click',navBtnActive)
 navBtn.forEach(btn => {
 
     btn.addEventListener('click', navBtnActive );
-    console.log(btn)
 })
 
 
@@ -31,3 +23,21 @@ function navBtnActive (event){
 }
 
 
+//transform slider fixed
+
+
+const sliderContainer = document.querySelector('.slider__container');
+console.log(sliderContainer);
+const sliderPosition = sliderContainer.getBoundingClientRect().bottom;
+console.log(sliderPosition)
+
+window.addEventListener('scroll', handlescroll);
+function handlescroll(){
+	if ((window.scrollY + window.innerHeight) > sliderPosition) {
+		 sliderContainer.classList.add('fixed');
+	} 
+	else{
+		 sliderContainer.classList.remove('fixed');
+	}
+
+}

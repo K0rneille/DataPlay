@@ -3,6 +3,8 @@
   @extend %bloc;
   background-color: $lightGray;
 
+  margin-bottom: 160px;
+
   &__belgium{
     padding-bottom: 8px;
     display: flex;
@@ -13,7 +15,7 @@
 
   .small{
     color: $white;
-    text-align: right;
+    text-align: right; 
 
   }
 

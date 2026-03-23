@@ -1,8 +1,16 @@
 .slider__container{
-
-  padding: 8px 0;
+  background-color: $colorBg;
+  padding: 0 16px;
   grid-column: 1 / -1;
+  padding: 20px;
+  bottom: 0px;
+  left: 0px;
+  width: 100%;
 
+}
+
+.fixed{
+  position: fixed;
 }
 
 

@@ -4,11 +4,14 @@
   grid-column: 1 / -1;
 
   &__canva {
-    
     width: 100%;
     aspect-ratio: 1 / 1;
     background-color: $white;
-  }
+    @media(min-width:1200px){
+        width: 60%;
+      }
+    }
+  
 
 
 
@@ -37,6 +40,9 @@
     aspect-ratio: 1 / 1;
 
 
+
+
+
     &--1{
       background: $lightGray;
     }
@@ -49,6 +55,11 @@
   @media(min-width:840px){
       grid-column: 3 / -1;
       grid-row: 4 / 6 ;
+    }
+
+  @media(min-width:1200px){
+      grid-column: 4 / -1;
+      grid-row: 4 / 6;
     }
 
 }

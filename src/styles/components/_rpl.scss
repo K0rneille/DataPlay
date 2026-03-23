@@ -1,11 +1,17 @@
 .schema__rpl{
 
     @extend %bloc;
+
+    
   &--1{
     grid-column: 1 / -2;
       @media(min-width:840px){
       grid-column: 1;
       grid-row: 4 ;
+    } 
+    @media(min-width:1200px){
+      grid-column: 1;
+      grid-row: 2;
     }
   }
   &--2{
@@ -14,6 +20,11 @@
     @media(min-width:840px){
       grid-column: 2;
       grid-row: 4 ;
+    }
+
+    @media(min-width:1200px){
+      grid-column: 2;
+      grid-row: 2;
     }
   }
 

@@ -25,7 +25,6 @@ function navBtnActive (event){
 
 //transform slider fixed
 
-
 const sliderContainer = document.querySelector('.slider__container');
 console.log(sliderContainer);
 const sliderPosition = sliderContainer.getBoundingClientRect().bottom;
@@ -35,6 +34,7 @@ window.addEventListener('scroll', handlescroll);
 function handlescroll(){
 	if ((window.scrollY + window.innerHeight) > sliderPosition) {
 		 sliderContainer.classList.add('fixed');
+
 	} 
 	else{
 		 sliderContainer.classList.remove('fixed');
@@ -57,6 +57,7 @@ let sliderSalaryText = sliderSalary.innerHTML ;
     }
 
     function changeSalaryPosition (value){
+
         slider.style.setProperty('--position', value)
         // console.log(getComputedStyle(slider).getPropertyValue('--position'))
     }

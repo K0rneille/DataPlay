@@ -1,0 +1,58 @@
+.source__toggle{
+  background-color: $lightGray;
+  color: $white;
+  border: none;
+  cursor: pointer;
+}
+.source__toggle:hover{
+  text-decoration: underline;
+}
+
+.source__list__container{
+  opacity: 0;
+  position: absolute;
+  z-index: 10;
+  background-color: $lightGray;
+  gap: $rem;
+  right: 0;
+  top: -110px;
+  
+  @extend%bloc  
+}
+
+.source__list{
+  display: flex;
+  flex-direction: column;
+  list-style: none;
+  text-decoration: none;
+  gap: $rem;
+  padding: 0;
+
+}
+
+.source__list__container--active{
+  transition: opacity .4s;
+  opacity: 100%;
+}
+
+.source__listel{
+  text-decoration: none;
+  color: $white;
+  
+    svg{
+      transform: rotate(-45deg);
+      fill: $white;
+      height: 16px;
+      aspect-ratio: 1 / 1;
+      z-index: 0;
+      transition: all 0.3s ease-in;
+    }
+
+    &:hover{
+      svg{
+      transform: rotate(0deg);
+
+      }
+
+    }
+}

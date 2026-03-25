@@ -114,6 +114,37 @@ sliderSalary.addEventListener('focusout', ()=> {
     
 })
 
+// changer taille menu 
+
+changerTailleMenu();
+function changerTailleMenu (){
+
+    if (window.innerWidth >= 1200){
+        const navElements = document.querySelectorAll('.navigation__element');
+        navElements.forEach((element) => {
+            const target = element.firstElementChild.innerHTML.toLowerCase();
+            // const result = parseFloat(data [target].rpl);
+            // console.log(result)
+
+            fetch('assets/data.json')
+            .then(function(reponse){
+                return reponse.json();
+            }).then(function(data){
+                const link = parseFloat(data[target].rpl);
+                console.log(link)
+                const valor = (link / 2.7683)
+                const decoration = element.lastElementChild;
+                console.log(decoration);
+            
+                decoration.style.width = `${valor}%`;
+            })
+        })
+
+
+    }
+}
+
+changerTailleMenu()
 
 // Fetch/DATA
 // Selections des villes
@@ -122,6 +153,7 @@ let donut1 = null;
 let donut2 = null;
 let slideBar = null;
 
+// Fetch btn
 const btn = document.querySelectorAll('.navigation__element');
 let selectedCities = [];
 window.addEventListener('load', () => {

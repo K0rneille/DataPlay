@@ -2,32 +2,27 @@ import Chart from 'chart.js/auto';
 "use strict";
 
 //bouton de nav
-
-
 const navBtn = document.querySelectorAll('button');
 
 navBtn.forEach(btn => {
     btn.addEventListener('click', navBtnActive );
 })
 
+// Prends les btn qui ont deja la classe active
 let activeBtn = Array.from(document.querySelectorAll('.navigation__element--active'));
-console.log(activeBtn)
+// console.log(activeBtn)
 
 function navBtnActive (event){
     event.preventDefault()
-    console.log(activeBtn)
     let target = event.target
-    if (target.classList.contains('navigation__element--active')){
-        target.classList.remove('navigation__element--active')
-    }else{
-        console.log('false')
-        target.classList.add('navigation__element--active')
-        activeBtn.push(target);
 
-        if(activeBtn.length > 2){
-            let oldestBtn = activeBtn.shift();
-            oldestBtn.classList.remove('navigation__element--active');
-        }
+    // console.log('false')
+    target.classList.add('navigation__element--active')
+    activeBtn.push(target);
+
+    if(activeBtn.length > 2){
+        let oldestBtn = activeBtn.shift();
+        oldestBtn.classList.remove('navigation__element--active');
     }
 }
 
@@ -35,9 +30,9 @@ function navBtnActive (event){
 //transform slider fixed
 const body = document.querySelector('body');
 const sliderContainer = document.querySelector('.slider__container');
-console.log(sliderContainer);
+// console.log(sliderContainer);
 const sliderPosition = sliderContainer.getBoundingClientRect().bottom;
-console.log(sliderPosition)
+// console.log(sliderPosition)
 
 window.addEventListener('scroll', handlescroll);
 handlescroll();
@@ -61,33 +56,26 @@ function handlescroll(){
 const sliderSalary = document.querySelector('.inputSalary');
 const slider = document.querySelector('.slider');
 const sliderInput = document.querySelector('.slider__input');
+// console.log(slider, sliderInput)
 let sliderSalaryText = sliderSalary.innerHTML ;
 
-    function ValueToPercent (inputPosition) {
-        const result = (inputPosition *100) / 10000
-        return `${result}%`
-    }
+function ValueToPercent (inputPosition) {
+    const result = (inputPosition *100) / 10000
+    return `${result}%`
+}
 
-    function changeSalaryPosition (value){
+function changeSalaryPosition (value){
 
-        slider.style.setProperty('--position', value)
-        // console.log(getComputedStyle(slider).getPropertyValue('--position'))
-    }
-
-
-
-
-
-
-
-
-
+    slider.style.setProperty('--position', value)
+    // console.log(getComputedStyle(slider).getPropertyValue('--position'))
+}
 
 
 // changer valeur du div en fonction du range
 function inputMovePassive(){
     const sliderSalaryPosition = getComputedStyle(sliderInput).getPropertyValue('--position');
     const sliderInputPosition = parseFloat(sliderInput.value);
+    // console.log(ValueToPercent(sliderInputPosition));
     changeSalaryPosition(ValueToPercent(sliderInputPosition));
     // const SliderWidth = slider.()
 }
@@ -99,41 +87,20 @@ function getInputPosition(){
 }
 
 
-
-
 //empecher un retour a la ligne
 window.addEventListener('keydown', (event)=>{
         if (event.key === 'Enter'&& event.target === sliderSalary){
             event.preventDefault();
         }
     })
-
-
-
-function ChangeDataRange (){
-
-    const salary = sliderInput.value;
-
-    const cities = document.querySelector('.navigation__element--active')
-
-
-    
-}
-
-
-
-
-
-
-
-
 // event du range
 sliderInput.addEventListener('input', () => {
     inputMovePassive();
+    // svgAppear();
 
     sliderSalary.innerHTML =''
     sliderSalary.innerHTML = `${getInputPosition()} €`;
-    ChangeDataRange();
+    // console.log(sliderSalary);
 })
 
 // event de l'input 
@@ -146,7 +113,6 @@ sliderSalary.addEventListener('focusout', ()=> {
     inputMovePassive();
     
 })
-
 
 // changer taille menu 
 
@@ -180,8 +146,12 @@ function changerTailleMenu (){
 
 changerTailleMenu()
 
+// Fetch/DATA
+// Selections des villes
 
-
+let donut1 = null;
+let donut2 = null;
+let slideBar = null;
 
 // Fetch btn
 const btn = document.querySelectorAll('.navigation__element');
@@ -196,23 +166,46 @@ window.addEventListener('load', () => {
 for (let i = 0; i < btn.length; i++){
     btn[i].addEventListener('click', (e) => {
         svgAppear(e.currentTarget.firstElementChild.innerText.toLowerCase())
-        console.log(e.currentTarget.firstElementChild.innerText.toLowerCase())
+        // console.log(e.currentTarget.firstElementChild.innerText.toLowerCase())
     }); 
 }
 
+
+
+// Fonction qui gere les data
 function svgAppear(cityNameParam){
+    // push des citys dans la liste
     const cityName = cityNameParam;
+    if (donut1) {
+        donut1.destroy();
+    }
+    if (donut2) {
+        donut2.destroy();
+    }
+    if(slideBar){
+        slideBar.destroy();
+    }
 
     if (selectedCities.includes(cityName)){
-        console.log("same shit");
         return;
     } 
 
     selectedCities.push(cityName);
     if (selectedCities.length > 2){ selectedCities.shift(); }
 
+    // matos 
     const img1 = document.querySelector('.schema__ville__img--1');
     const img2 = document.querySelector('.schema__ville__img--2');
+    const cityTitle1 = document.querySelectorAll('.city--1__title');
+    const cityTitle2 = document.querySelectorAll('.city--2__title');
+    const cityRpl1 = document.querySelector('.city--1__rpl');
+    const cityRpl2 = document.querySelector('.city--2__rpl');
+    let maskFiller1 = document.getElementById('maskFiller1');
+    let maskFiller2 = document.getElementById('maskFiller2');    
+    const canvaDay1 = document.querySelector('.canva__day1');
+    const canvaDay2 = document.querySelector('.canva__day2');
+    const painNbr1 = document.querySelector('.canva__nbr1');
+    const painNbr2 = document.querySelector('.canva__nbr2');
 
     fetch('assets/data.json')
     .then(function(response){ 
@@ -223,6 +216,7 @@ function svgAppear(cityNameParam){
         let cityA = citySorted[0];
         let cityB = citySorted[1];
 
+        // classement des deux villes
         if (cityB){
             const rplA = parseFloat(dataCity[cityA].rpl);
             const rplB = parseFloat(dataCity[cityB].rpl);
@@ -239,9 +233,124 @@ function svgAppear(cityNameParam){
         else{
             window.currentRatio = 1; 
         }
-        console.log(window.currentRatio);
-        console.log(citySorted[0]);
-        console.log(citySorted[1]);
+
+        // Affichage des villes et autres
+        cityTitle1.forEach((element) => element.innerHTML = cityA.toUpperCase());
+        cityTitle2.forEach((element) => element.innerHTML = cityB.toUpperCase());
+
+        cityRpl1.innerHTML = dataCity[cityA].rpl;
+        cityRpl2.innerHTML = dataCity[cityB].rpl;
+        
+        maskFiller1.setAttribute('y', 277-dataCity[cityA].rpl);
+        maskFiller2.setAttribute('y', 277-dataCity[cityB].rpl);
+
+        //Chart JS
+        // Donut1 const 
+        const totalDays = 365; 
+        const gainValue1 = sliderInput.value / 21.7;
+        const daysValue1 = dataCity[cityA].m2 / gainValue1;
+        canvaDay1.innerHTML = Math.round(daysValue1);
+        // console.log(daysValue1);
+        donut1 = new Chart(document.getElementById("temps__travail--1__canva"), {
+            type: "doughnut",
+            data :{
+                datasets: [{
+                    data: [daysValue1, Math.max(0, Math.min(365, (totalDays - daysValue1)))],
+                    backgroundColor: ["#e0e0e0", "#333"],
+                    borderWidth: 0,
+                    cutout: "60%",
+                    circumference: 180,
+                    rotation: 270,
+                    borderRadius: 5
+            }]},
+            options: {
+                maintainAspectRatio: false,
+                plugins: {
+                legend: { display: true },
+                tooltip: { enabled: true }
+                }
+            },
+        });
+
+        const gainValue2 = sliderInput.value / 30;
+        const daysValue2 = dataCity[cityB].m2 / gainValue2;
+        canvaDay2.innerHTML = Math.round(daysValue2);
+        console.log(totalDays - daysValue1);
+        donut2 = new Chart(document.getElementById("temps__travail--2__canva"), {
+            type: "doughnut",
+            data :{
+                datasets: [{
+                    data: [daysValue2, Math.max(0, Math.min(365, (totalDays - daysValue2)))],
+                    backgroundColor: ["#e0e0e0", "#333"],
+                    borderWidth: 0,
+                    cutout: "60%",
+                    circumference: 180,
+                    rotation: 270,
+                    borderRadius: 5
+            }]},
+            options: {
+                maintainAspectRatio: false,
+                plugins: {
+                legend: { display: true },
+                tooltip: { enabled: false }
+                }
+            },
+        });
+
+        // Slide bar
+        const left = sliderInput.value / dataCity[cityA].pain;
+        const right = sliderInput.value / dataCity[cityB].pain;
+        const totalMax = left + right;
+        painNbr1.innerHTML = Math.round(left);
+        painNbr2.innerHTML = Math.round(right);
+
+        slideBar = new Chart(
+        document.getElementById('schema__pain'), {
+            type: 'bar',
+            data: {
+            labels: ['City1 vs City2'],
+            datasets: [
+                {
+                label: 'City1',
+                data: [left],
+                backgroundColor: '#e0e0e0',
+                borderWidth: 0,
+                borderRadius: { topLeft: 10, bottomLeft: 10, topRight: 0, bottomRight: 0 },
+                borderSkipped: false
+                },
+                {
+                label: 'City2',
+                data: [right],
+                backgroundColor: '#333',
+                borderWidth: 0,
+                borderRadius: { topLeft: 0, bottomLeft: 0, topRight: 10, bottomRight: 10 },
+                borderSkipped: false
+                }
+            ]
+            },
+            options: {
+            maintainAspectRatio: false,
+            indexAxis: 'y',
+            scales: {
+                x: {
+                stacked: true,
+                max: totalMax,
+                display: false
+                },
+                y: {
+                stacked: true,
+                display: false
+                }
+            },
+            plugins: {
+                legend: { display: false },
+                tooltip: { enabled: false }
+            }
+            },
+        }
+        );
+        
+        // Affichage des svg et leurs styles
         if (citySorted[0]){
             fetch(`assets/images/${citySorted[0]}.svg`)
             .then(r => r.text())
@@ -250,10 +359,8 @@ function svgAppear(cityNameParam){
                 const s = img1.querySelector('svg');
                 s.style.transform = "scale(1)";
                 s.querySelectorAll('path').forEach(p => {
-                    p.style.stroke = "black";
-                    p.style.strokeWidth = "1.33px";
-                    p.style.vectorEffect = "non-scaling-stroke"; 
-                    p.style.fill = "black";
+                    p.style.stroke = "none";
+                    p.style.fill = "#414141";
                 });
             });
         }
@@ -267,150 +374,10 @@ function svgAppear(cityNameParam){
                 s.style.transform = `scale(${window.currentRatio})`;
                 s.style.transformOrigin = "center";
                 s.querySelectorAll('path').forEach(p => {
-                    p.style.stroke = "white";
-                    p.style.strokeWidth = "1.33px";
-                    p.style.vectorEffect = "non-scaling-stroke"; 
-                    p.style.fill = "white";
-                    // p.style.opacity = "0.7"
+                    p.style.stroke = "none";
+                    p.style.fill = "#F2F0EF";
                 });
             });
         }
     });
 }
-
-//Chart JS
-// Donut1 const 
-
-const totalDays = 365; 
-const daysValue1 = 124;
-const donut1 = new Chart(document.getElementById("temps__travail--1__canva"), {
-    type: "doughnut",
-    data :{
-        datasets: [{
-            data: [daysValue1, totalDays - daysValue1],
-            backgroundColor: ["#e0e0e0", "#333"],
-            borderWidth: 0,
-            cutout: "60%",
-            circumference: 180,
-            rotation: 270,
-            borderRadius: 5
-    }]},
-    options: {
-        maintainAspectRatio: false,
-        plugins: {
-        legend: { display: true },
-        tooltip: { enabled: false }
-        }
-    },
-});
-
-
-
-const daysValue2 = 124;
-const donut2 = new Chart(document.getElementById("temps__travail--2__canva"), {
-    type: "doughnut",
-    data :{
-        datasets: [{
-            data: [daysValue2, totalDays - daysValue2],
-            backgroundColor: ["#e0e0e0", "#333"],
-            borderWidth: 0,
-            cutout: "60%",
-            circumference: 180,
-            rotation: 270,
-            borderRadius: 5
-    }]},
-    options: {
-        maintainAspectRatio: false,
-        plugins: {
-        legend: { display: true },
-        tooltip: { enabled: false }
-        }
-    },
-});
-
-
-// Slide bar
-const City1 = 120;
-const City2 = 92;
-const totalMax = City2 + City1;
-
-const slideBar = new Chart(
-  document.getElementById('schema__pain'), {
-    type: 'bar',
-    data: {
-      labels: ['City1 vs City2'],
-      datasets: [
-        {
-          label: 'City1',
-          data: [City1],
-          backgroundColor: '#e0e0e0',
-          borderWidth: 0,
-          borderRadius: { topLeft: 10, bottomLeft: 10, topRight: 0, bottomRight: 0 },
-          borderSkipped: false
-        },
-        {
-          label: 'City2',
-          data: [City2],
-          backgroundColor: '#333',
-          borderWidth: 0,
-          borderRadius: { topLeft: 0, bottomLeft: 0, topRight: 10, bottomRight: 10 },
-          borderSkipped: false
-        }
-      ]
-    },
-    options: {
-      maintainAspectRatio: false,
-      indexAxis: 'y',
-      scales: {
-        x: {
-          stacked: true,
-          max: totalMax,
-          display: false
-        },
-        y: {
-          stacked: true,
-          display: false
-        }
-      },
-      plugins: {
-        legend: { display: false },
-        tooltip: { enabled: false }
-      }
-    },
-  }
-);
-
-// sources
-
-const menuToggle = document.querySelector(".source__toggle");
-const menu = document.querySelector(".source__list__container");
-const menuLinks = document.querySelectorAll("a");
-
-
-if(menuToggle){
-    menuToggle.addEventListener("click", menuOpen);
-
-    for (let i = 0; i < menuLinks.length; i++) {
-        menuLinks[i].addEventListener("click", menuOpen);
-    }
-}
-
-function menuOpen(event){
-    menu.classList.toggle("source__list__container--active");
-}
-
-// dateyear
-
-const date = new Date();
-
-const currenthour = date.getHours();
-const currentminute = date.getMinutes();
-const currentyear = date.getFullYear();
-const yearfooter = document.querySelector(".dateyear");
-yearfooter.innerHTML = currentyear;
-
-const nowPrint = `${currenthour}:${currentminute}`
-console.log(nowPrint)
-
-const nowPrinttarget = document.querySelector(".footer__hour");
-nowPrinttarget.innerHTML = nowPrint;

@@ -105,13 +105,8 @@
   }
 
     .navigation__element--active{
-
-     .navigation__decoration {
-        background: $white;
-
-      }
-
-
+      background: $white;
+      pointer-events: none;
       
        p:not(.number) {color:$darkGray;}
 

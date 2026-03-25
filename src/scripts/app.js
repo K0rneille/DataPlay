@@ -398,3 +398,11 @@ if(menuToggle){
 function menuOpen(event){
     menu.classList.toggle("source__list__container--active");
 }
+
+// dateyear
+
+const date = new Date();
+
+const currentyear = date.getFullYear();
+const yearfooter = document.querySelector(".dateyear");
+yearfooter.textContent = currentyear;

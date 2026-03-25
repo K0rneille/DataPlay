@@ -41,6 +41,12 @@
   &__element{
     background-color: $lightGray;
 
+
+  transition: all 0.3s ease-in;
+    &:hover{
+      background-color: $hoverGray;
+    }
+
     box-sizing: border-box;
     display: flex;
     flex-direction: column;

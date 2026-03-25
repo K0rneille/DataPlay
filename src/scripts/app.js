@@ -24,23 +24,27 @@ function navBtnActive (event){
 
 
 //transform slider fixed
-
+const body = document.querySelector('body');
 const sliderContainer = document.querySelector('.slider__container');
 console.log(sliderContainer);
 const sliderPosition = sliderContainer.getBoundingClientRect().bottom;
 console.log(sliderPosition)
 
 window.addEventListener('scroll', handlescroll);
+handlescroll();
+
 function handlescroll(){
-	if ((window.scrollY + window.innerHeight) > sliderPosition) {
-		 sliderContainer.classList.add('fixed');
+    if (window.scrollY > 0 ){
+		 body.classList.add('scrolled');
 
 	} 
 	else{
-		 sliderContainer.classList.remove('fixed');
+		 body.classList.remove('scrolled');
 	}
 
-} 
+    } 
+
+
 
 
 //slider text position 

@@ -3,6 +3,8 @@
   border: none; 
   font-family: $monotypefont;
   grid-column: 1 / -1;
+  text-align: center;
+  text-decoration: none;
 
   @media(min-width:840px){
       
@@ -13,4 +15,25 @@
 
       margin-bottom: 180px;
     }
+
+
+
+
+
+    &:before{
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: $white;
+      
+    }
+
+
+
+
+
+
 }

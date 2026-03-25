@@ -8,7 +8,7 @@
     aspect-ratio: 1 / 1;
     background-color: $white;
     @media(min-width:1200px){
-        width: 60%;
+        height: 100%;
       }
     }
   
@@ -26,6 +26,12 @@
     flex-direction: row;
     gap: $rem;
 
+    @media(min-width:1200px){
+
+      order: -1;
+    }
+
+
   }
 
   &__btn{
@@ -34,11 +40,21 @@
     align-items: center;
   }
 
+    &__container{
+      display: flex;
+      flex-direction: column;
+      gap: $padding_mobile;
+      @media(min-width:1200px){
+      flex-direction: row;
+      gap: $padding_desktop;
+      align-items: flex-end;
+    }
+  }
+
   &__legendeCouleur{
     margin-bottom: 8px;
     height: 40px;
     aspect-ratio: 1 / 1;
-
 
 
 

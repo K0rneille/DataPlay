@@ -403,6 +403,14 @@ function menuOpen(event){
 
 const date = new Date();
 
+const currenthour = date.getHours();
+const currentminute = date.getMinutes();
 const currentyear = date.getFullYear();
 const yearfooter = document.querySelector(".dateyear");
-yearfooter.textContent = currentyear;
+yearfooter.innerHTML = currentyear;
+
+const nowPrint = `${currenthour}:${currentminute}`
+console.log(nowPrint)
+
+const nowPrinttarget = document.querySelector(".footer__hour");
+nowPrinttarget.innerHTML = nowPrint;

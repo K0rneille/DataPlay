@@ -1,24 +1,33 @@
+import Chart from 'chart.js/auto';
+"use strict";
+
 //bouton de nav
 
 
-const navBtn = document.querySelectorAll('.navigation__element');
+const navBtn = document.querySelectorAll('button');
 
 navBtn.forEach(btn => {
-
     btn.addEventListener('click', navBtnActive );
 })
 
-
+let activeBtn = Array.from(document.querySelectorAll('.navigation__element--active'));
+console.log(activeBtn)
 
 function navBtnActive (event){
     event.preventDefault()
-    console.log(navBtn)
+    console.log(activeBtn)
     let target = event.target
     if (target.classList.contains('navigation__element--active')){
         target.classList.remove('navigation__element--active')
     }else{
         console.log('false')
         target.classList.add('navigation__element--active')
+        activeBtn.push(target);
+
+        if(activeBtn.length > 2){
+            let oldestBtn = activeBtn.shift();
+            oldestBtn.classList.remove('navigation__element--active');
+        }
     }
 }
 
@@ -42,9 +51,7 @@ function handlescroll(){
 		 body.classList.remove('scrolled');
 	}
 
-    } 
-
-
+} 
 
 
 //slider text position 
@@ -79,3 +86,201 @@ function inputMovePassive(){
 sliderInput.addEventListener('input', () => {
     inputMovePassive();
 })
+
+
+// Fetch
+const btn = document.querySelectorAll('.navigation__element');
+let selectedCities = [];
+window.addEventListener('load', () => {
+    const defaultCities = ["bruxelles", "paris"];
+    defaultCities.forEach(city => {
+        svgAppear(city);
+    })
+});
+
+for (let i = 0; i < btn.length; i++){
+    btn[i].addEventListener('click', (e) => {
+        svgAppear(e.currentTarget.firstElementChild.innerText.toLowerCase())
+        console.log(e.currentTarget.firstElementChild.innerText.toLowerCase())
+    }); 
+}
+
+function svgAppear(cityNameParam){
+    const cityName = cityNameParam;
+
+    if (selectedCities.includes(cityName)){
+        console.log("same shit");
+        return;
+    } 
+
+    selectedCities.push(cityName);
+    if (selectedCities.length > 2){ selectedCities.shift(); }
+
+    const img1 = document.querySelector('.schema__ville__img--1');
+    const img2 = document.querySelector('.schema__ville__img--2');
+
+    fetch('assets/data.json')
+    .then(function(response){ 
+        return response.json();
+    })
+    .then(function(dataCity){
+        let citySorted = [...selectedCities];
+        let cityA = citySorted[0];
+        let cityB = citySorted[1];
+
+        if (cityB){
+            const rplA = parseFloat(dataCity[cityA].rpl);
+            const rplB = parseFloat(dataCity[cityB].rpl);
+
+            if (rplB > rplA){
+                citySorted = [cityB, cityA];
+                cityA = citySorted[0];
+                cityB = citySorted[1];
+            }
+            
+            const ratio = dataCity[cityB].rpl / dataCity[cityA].rpl;
+            window.currentRatio = ratio; 
+        } 
+        else{
+            window.currentRatio = 1; 
+        }
+        console.log(window.currentRatio);
+        console.log(citySorted[0]);
+        console.log(citySorted[1]);
+        if (citySorted[0]){
+            fetch(`assets/images/${citySorted[0]}.svg`)
+            .then(r => r.text())
+            .then(data => {
+                img1.innerHTML = data;
+                const s = img1.querySelector('svg');
+                s.style.transform = "scale(1)";
+                s.querySelectorAll('path').forEach(p => {
+                    p.style.stroke = "black";
+                    p.style.strokeWidth = "1.33px";
+                    p.style.vectorEffect = "non-scaling-stroke"; 
+                    p.style.fill = "black";
+                });
+            });
+        }
+        
+        if (citySorted[1]){
+            fetch(`assets/images/${citySorted[1]}.svg`)
+            .then(r => r.text())
+            .then(data => {
+                img2.innerHTML = data;
+                const s = img2.querySelector('svg');
+                s.style.transform = `scale(${window.currentRatio})`;
+                s.style.transformOrigin = "center";
+                s.querySelectorAll('path').forEach(p => {
+                    p.style.stroke = "white";
+                    p.style.strokeWidth = "1.33px";
+                    p.style.vectorEffect = "non-scaling-stroke"; 
+                    p.style.fill = "white";
+                    // p.style.opacity = "0.7"
+                });
+            });
+        }
+    });
+}
+
+//Chart JS
+// Donut1 const 
+
+const totalDays = 365; 
+const daysValue1 = 124;
+const donut1 = new Chart(document.getElementById("temps__travail--1__canva"), {
+    type: "doughnut",
+    data :{
+        datasets: [{
+            data: [daysValue1, totalDays - daysValue1],
+            backgroundColor: ["#e0e0e0", "#333"],
+            borderWidth: 0,
+            cutout: "60%",
+            circumference: 180,
+            rotation: 270,
+            borderRadius: 5
+    }]},
+    options: {
+        maintainAspectRatio: false,
+        plugins: {
+        legend: { display: true },
+        tooltip: { enabled: false }
+        }
+    },
+});
+
+
+
+const daysValue2 = 124;
+const donut2 = new Chart(document.getElementById("temps__travail--2__canva"), {
+    type: "doughnut",
+    data :{
+        datasets: [{
+            data: [daysValue2, totalDays - daysValue2],
+            backgroundColor: ["#e0e0e0", "#333"],
+            borderWidth: 0,
+            cutout: "60%",
+            circumference: 180,
+            rotation: 270,
+            borderRadius: 5
+    }]},
+    options: {
+        maintainAspectRatio: false,
+        plugins: {
+        legend: { display: true },
+        tooltip: { enabled: false }
+        }
+    },
+});
+
+
+// Slide bar
+const City1 = 120;
+const City2 = 92;
+const totalMax = City2 + City1;
+
+const slideBar = new Chart(
+  document.getElementById('schema__pain'), {
+    type: 'bar',
+    data: {
+      labels: ['City1 vs City2'],
+      datasets: [
+        {
+          label: 'City1',
+          data: [City1],
+          backgroundColor: '#e0e0e0',
+          borderWidth: 0,
+          borderRadius: { topLeft: 10, bottomLeft: 10, topRight: 0, bottomRight: 0 },
+          borderSkipped: false
+        },
+        {
+          label: 'City2',
+          data: [City2],
+          backgroundColor: '#333',
+          borderWidth: 0,
+          borderRadius: { topLeft: 0, bottomLeft: 0, topRight: 10, bottomRight: 10 },
+          borderSkipped: false
+        }
+      ]
+    },
+    options: {
+      maintainAspectRatio: false,
+      indexAxis: 'y',
+      scales: {
+        x: {
+          stacked: true,
+          max: totalMax,
+          display: false
+        },
+        y: {
+          stacked: true,
+          display: false
+        }
+      },
+      plugins: {
+        legend: { display: false },
+        tooltip: { enabled: false }
+      }
+    },
+  }
+);

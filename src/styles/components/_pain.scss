@@ -3,10 +3,8 @@
     @extend %bloc;
   grid-column: 1 / -1;
 
-  &__canva {
-    height:80px ;
-    width: 100%;
-    background-color: $white;
+  .schema__pain__container{
+    max-height: 80px; width: 100%;
   }
 
 

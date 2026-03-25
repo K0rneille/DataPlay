@@ -41,11 +41,9 @@
   }
 
 
-  &__canva{
-
-    height:200px ;
+  .canva__container{
+    max-height: 200px;
     width: 100%;
-    background-color: $white;
   }
 
 }

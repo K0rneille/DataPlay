@@ -54,6 +54,8 @@ function handlescroll(){
 } 
 
 
+
+
 //slider text position 
 
 const sliderSalary = document.querySelector('.inputSalary');

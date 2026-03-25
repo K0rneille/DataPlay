@@ -112,7 +112,7 @@ body.scrolled {
   left: var(--position);
   transform: translateX(-50%);
   border-radius: 8px;
-  text-wrap: unset;
+  white-space: no-wrap;
 
 }
 

@@ -130,6 +130,12 @@ sliderSalary.addEventListener('focusout', ()=> {
 })
 
 
+
+
+
+
+
+
 // Fetch
 const btn = document.querySelectorAll('.navigation__element');
 let selectedCities = [];

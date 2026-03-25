@@ -108,7 +108,7 @@ window.addEventListener('keydown', (event)=>{
 sliderInput.addEventListener('input', () => {
     inputMovePassive();
 
-
+    sliderSalary.innerHTML =''
     sliderSalary.innerHTML = `${getInputPosition()} €`;
     console.log(sliderSalary);
 
@@ -116,8 +116,9 @@ sliderInput.addEventListener('input', () => {
 
 // event de l'input 
 sliderSalary.addEventListener('focusout', ()=> {
-    const value = sliderSalary.innerHTML;
-     const salary = `${sliderSalary.innerHTML} €`
+    let value = sliderSalary.innerHTML;
+        value =  value.replace('€', '')
+     const salary = `${value} €`
     sliderSalary.innerHTML = salary
     sliderInput.value = value
     inputMovePassive();

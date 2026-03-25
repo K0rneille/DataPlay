@@ -1,3 +1,7 @@
+"use strict";
+
+
+
 //bouton de nav
 
 
@@ -71,11 +75,38 @@ function inputMovePassive(){
     const sliderInputPosition = parseFloat(sliderInput.value);
     console.log(ValueToPercent(sliderInputPosition));
     changeSalaryPosition(ValueToPercent(sliderInputPosition));
-    console.log(sliderInputPosition)
     // const SliderWidth = slider.()
 }
 
 
+function getInputPosition(){
+    const sliderInputPosition = parseFloat(sliderInput.value);
+    const ValueSalaryInput = sliderInputPosition ;
+    return ValueSalaryInput;
+}
+
 sliderInput.addEventListener('input', () => {
     inputMovePassive();
+
+
+    sliderSalary.innerHTML = `${getInputPosition()} €`;
+    console.log(sliderSalary);
+
+}) 
+
+
+sliderSalary.addEventListener('focusout', ()=> {
+    const value = sliderSalary.innerHTML;
+     const salary = `${sliderSalary.innerHTML} €`
+    sliderSalary.innerHTML = salary
+    sliderInput.value = value
+    inputMovePassive();
+    
 })
+
+
+window.addEventListener('keydown', (event)=>{
+        if (event.key === 'Enter'&& event.target === sliderSalary){
+            event.preventDefault();
+        }
+    })

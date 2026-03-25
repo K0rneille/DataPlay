@@ -1,5 +1,5 @@
 .schema__pain{
-
+position: relative;
     @extend %bloc;
   grid-column: 1 / -1;
 
@@ -23,6 +23,26 @@
       grid-column: 1 / -1;
       grid-row: 3;
     }
+
+
+}
+
+
+.schema__pain__nbr{
+  width: 80%;
+  left: 10%;
+  top: 105px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  position: absolute;
+
+
+}
+.canva__nbr{
+  font-weight: 700;
+  color: $colorBg;
+  @include font-title(mono , 4);
 
 
 }

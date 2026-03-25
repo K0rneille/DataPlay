@@ -1,11 +1,11 @@
 .temps__travail{
-
+  position: relative;
   *{
     margin: 0
   }
   @extend %bloc;
 
-
+  
 
 
   &--1{
@@ -41,9 +41,43 @@
   }
 
 
+  &__dates{
+    display: flex;
+    justify-content: space-between;
+    width: 70%;
+    margin: 0 auto;
+
+  @media(min-width:840px){
+    width:100%;
+    padding: 0 50px;
+    }
+
+  @media(min-width:1200px){
+    width:100%;
+    padding: 0 20px;
+    }
+  
+
+  }
+
+
   .canva__container{
     max-height: 200px;
     width: 100%;
+    margin: 20px
   }
 
 }
+
+.canva__day{
+
+  position: absolute;
+  left: 52%;
+  transform: translateX(-50%);
+  top: 60%;
+  font-family: $monotypefont;
+  
+  font-size: remscale(6);
+
+}
+

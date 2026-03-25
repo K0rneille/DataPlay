@@ -326,3 +326,22 @@ const slideBar = new Chart(
     },
   }
 );
+
+// sources
+
+const menuToggle = document.querySelector(".source__toggle");
+const menu = document.querySelector(".source__list__container");
+const menuLinks = document.querySelectorAll("a");
+
+
+if(menuToggle){
+    menuToggle.addEventListener("click", menuOpen);
+
+    for (let i = 0; i < menuLinks.length; i++) {
+        menuLinks[i].addEventListener("click", menuOpen);
+    }
+}
+
+function menuOpen(event){
+    menu.classList.toggle("source__list__container--active");
+}

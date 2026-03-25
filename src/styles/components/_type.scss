@@ -1,28 +1,43 @@
+
+html{
+  scroll-behavior: smooth;
+}
+
+
 body {
   color: white;
-  font-family: $primaryfont;
+  font-family: $monotypefont;
   font-size: $rem;
   line-height: 1.5;
   background-color: $colorBg;
   margin: 0;
 
 
+  main{
+    position: relative;
 
-  gap: $padding_mobile;
-  padding: $padding_mobile;
 
+    width: 100%;
+    max-width: 100%;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: $padding_mobile;
+    padding: $padding_mobile;
 
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  grid-template-rows: auto;
+    @media(min-width:840px){
+      grid-template-columns: repeat(4, 1fr);
+    }
 
-  @media(min-width:1200px){
-    gap: $padding_desktop;
-    padding: $padding_desktop;
-    grid-template-columns: repeat(6, 1fr);
+    @media(min-width:1200px){
+      gap: $padding_desktop;
+      padding: $padding_desktop;
+      grid-template-columns: repeat(6, 1fr);
+    }
+
+      scroll-behavior: smooth;
+
   }
 
-  
 
 
 
@@ -31,26 +46,57 @@ body {
 
 
 p {
-  font-size: remscale(1);
+  font-size: remscale(0);
   font-weight: 400;
+  font-family: $primaryfont;
 } 
 
 
 h1{
   @include font-title(primary, 6);
-  text-indent: 100%;
-  text-wrap: unset;
-  overflow: hidden;
-  width: 100px ;
-  height: 100px;
-  position: absolute;
-}
+  grid-column: 1/-1;
+  margin: 0;
+  height: fit-content;
+
+  @media(min-width:840px){
+      grid-row: 8 ;
+    }
+  @media(min-width:1200px){
+      grid-column: 1 / 4;
+      grid-row: 5;
+    }
+
+  span{
+    @extend %outofbloc;
+    display: none;
+  }
+
+  
+
+  svg{
+    width: 100%;
+    height: 40vw;
+
+    @media(min-width:1200px){
+      height: 20vw;
+    }
+  }
+}   
 
 h2{
-  @include font-title(mono, 1);
+  font-weight: 400;
+  @include font-title(mono, 0);
+  text-transform: uppercase
 }
 
 h3{
-  @include font-title(primary, 4);
+  @include font-title(mono, 2);
 }
 
+strong{
+  @include font-title(mono, 3);
+}
+
+.small{
+    @include font-title(mono, -1);
+} 

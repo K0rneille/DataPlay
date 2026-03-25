@@ -1,0 +1,50 @@
+.footer{
+  grid-column: 1 / -1;
+
+  @media(min-width:840px){
+      grid-row: 7 ;
+      margin-bottom: 0px;
+    }
+  @media(min-width:1200px){
+      grid-column: 1 / 4;
+      grid-row: 4;
+    }
+  @extend %bloc;
+  background-color: $lightGray;
+
+  margin-bottom: 160px;
+
+  &__belgium{
+    padding-bottom: 8px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    border-bottom: 1px $white solid;
+  }
+
+  .small{
+    color: $white;
+    text-align: right; 
+
+  }
+
+  p{
+    font-family: $monotypefont;
+  }
+}
+
+.link{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: $rem;
+  color: $white;
+  text-decoration: none;
+      svg{
+      transform: rotate(-45deg);
+      fill: $white;
+      height: 16px;
+      aspect-ratio: 1 / 1;
+      z-index: 0;
+    }
+}

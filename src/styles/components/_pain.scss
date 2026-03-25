@@ -1,0 +1,30 @@
+.schema__pain{
+
+    @extend %bloc;
+  grid-column: 1 / -1;
+
+  &__canva {
+    height:80px ;
+    width: 100%;
+    background-color: $white;
+  }
+
+
+
+  &__text{
+    display: flex;
+    justify-content: space-between;
+    font-family: $monotypefont;
+  }
+    @media(min-width:840px){
+      grid-column: 1 / 3;
+      grid-row: 5 ;
+    }
+
+    @media(min-width:1200px){
+      grid-column: 1 / -1;
+      grid-row: 3;
+    }
+
+
+}

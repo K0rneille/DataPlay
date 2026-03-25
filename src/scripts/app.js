@@ -70,6 +70,17 @@ let sliderSalaryText = sliderSalary.innerHTML ;
         // console.log(getComputedStyle(slider).getPropertyValue('--position'))
     }
 
+
+
+
+
+
+
+
+
+
+
+// changer valeur du div en fonction du range
 function inputMovePassive(){
     const sliderSalaryPosition = getComputedStyle(sliderInput).getPropertyValue('--position');
     const sliderInputPosition = parseFloat(sliderInput.value);
@@ -78,13 +89,22 @@ function inputMovePassive(){
     // const SliderWidth = slider.()
 }
 
-
+    //opternir la valeur du range
 function getInputPosition(){
     const sliderInputPosition = parseFloat(sliderInput.value);
-    const ValueSalaryInput = sliderInputPosition ;
-    return ValueSalaryInput;
+    return sliderInputPosition;
 }
 
+
+
+
+//empecher un retour a la ligne
+window.addEventListener('keydown', (event)=>{
+        if (event.key === 'Enter'&& event.target === sliderSalary){
+            event.preventDefault();
+        }
+    })
+// event du range
 sliderInput.addEventListener('input', () => {
     inputMovePassive();
 
@@ -94,7 +114,7 @@ sliderInput.addEventListener('input', () => {
 
 }) 
 
-
+// event de l'input 
 sliderSalary.addEventListener('focusout', ()=> {
     const value = sliderSalary.innerHTML;
      const salary = `${sliderSalary.innerHTML} €`
@@ -103,10 +123,3 @@ sliderSalary.addEventListener('focusout', ()=> {
     inputMovePassive();
     
 })
-
-
-window.addEventListener('keydown', (event)=>{
-        if (event.key === 'Enter'&& event.target === sliderSalary){
-            event.preventDefault();
-        }
-    })

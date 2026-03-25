@@ -41,6 +41,11 @@ function handlescroll(){
 	}
 
 } 
+<<<<<<< Updated upstream
+=======
+
+
+>>>>>>> Stashed changes
 
 
 //slider text position 

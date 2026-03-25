@@ -78,7 +78,7 @@
 
     .navigation__element--active{
       background: $white;
-
+      pointer-events: none;
       
        p {color:$darkGray;}
     }

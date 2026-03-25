@@ -61,7 +61,6 @@ function handlescroll(){
 const sliderSalary = document.querySelector('.inputSalary');
 const slider = document.querySelector('.slider');
 const sliderInput = document.querySelector('.slider__input');
-console.log(slider, sliderInput)
 let sliderSalaryText = sliderSalary.innerHTML ;
 
     function ValueToPercent (inputPosition) {
@@ -89,7 +88,6 @@ let sliderSalaryText = sliderSalary.innerHTML ;
 function inputMovePassive(){
     const sliderSalaryPosition = getComputedStyle(sliderInput).getPropertyValue('--position');
     const sliderInputPosition = parseFloat(sliderInput.value);
-    console.log(ValueToPercent(sliderInputPosition));
     changeSalaryPosition(ValueToPercent(sliderInputPosition));
     // const SliderWidth = slider.()
 }
@@ -109,13 +107,33 @@ window.addEventListener('keydown', (event)=>{
             event.preventDefault();
         }
     })
+
+
+
+function ChangeDataRange (){
+
+    const salary = sliderInput.value;
+
+    const cities = document.querySelector('.navigation__element--active')
+
+
+    
+}
+
+
+
+
+
+
+
+
 // event du range
 sliderInput.addEventListener('input', () => {
     inputMovePassive();
 
     sliderSalary.innerHTML =''
     sliderSalary.innerHTML = `${getInputPosition()} €`;
-    console.log(sliderSalary);
+    ChangeDataRange();
 })
 
 // event de l'input 
@@ -130,13 +148,42 @@ sliderSalary.addEventListener('focusout', ()=> {
 })
 
 
+// changer taille menu 
+
+changerTailleMenu();
+function changerTailleMenu (){
+
+    if (window.innerWidth >= 1200){
+        const navElements = document.querySelectorAll('.navigation__element');
+        navElements.forEach((element) => {
+            const target = element.firstElementChild.innerHTML.toLowerCase();
+            // const result = parseFloat(data [target].rpl);
+            // console.log(result)
+
+            fetch('assets/data.json')
+            .then(function(reponse){
+                return reponse.json();
+            }).then(function(data){
+                const link = parseFloat(data[target].rpl);
+                console.log(link)
+                const valor = (link / 2.7683)
+                const decoration = element.lastElementChild;
+                console.log(decoration);
+            
+                decoration.style.width = `${valor}%`;
+            })
+        })
+
+
+    }
+}
+
+changerTailleMenu()
 
 
 
 
-
-
-// Fetch
+// Fetch btn
 const btn = document.querySelectorAll('.navigation__element');
 let selectedCities = [];
 window.addEventListener('load', () => {

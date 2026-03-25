@@ -3,17 +3,9 @@
 
 const navBtn = document.querySelectorAll('.navigation__element');
 
-
-
-// let i = 0 ; i< navBtn.getLengh()-1 ; i++ {
-
-// }
-
-// navBtn.addEventListener('click',navBtnActive)
 navBtn.forEach(btn => {
 
     btn.addEventListener('click', navBtnActive );
-    console.log(btn)
 })
 
 
@@ -31,3 +23,55 @@ function navBtnActive (event){
 }
 
 
+//transform slider fixed
+
+const sliderContainer = document.querySelector('.slider__container');
+console.log(sliderContainer);
+const sliderPosition = sliderContainer.getBoundingClientRect().bottom;
+console.log(sliderPosition)
+
+window.addEventListener('scroll', handlescroll);
+function handlescroll(){
+	if ((window.scrollY + window.innerHeight) > sliderPosition) {
+		 sliderContainer.classList.add('fixed');
+
+	} 
+	else{
+		 sliderContainer.classList.remove('fixed');
+	}
+
+} 
+
+
+//slider text position 
+
+const sliderSalary = document.querySelector('.inputSalary');
+const slider = document.querySelector('.slider');
+const sliderInput = document.querySelector('.slider__input');
+console.log(slider, sliderInput)
+let sliderSalaryText = sliderSalary.innerHTML ;
+
+    function ValueToPercent (inputPosition) {
+        const result = (inputPosition *100) / 10000
+        return `${result}%`
+    }
+
+    function changeSalaryPosition (value){
+
+        slider.style.setProperty('--position', value)
+        // console.log(getComputedStyle(slider).getPropertyValue('--position'))
+    }
+
+function inputMovePassive(){
+    const sliderSalaryPosition = getComputedStyle(sliderInput).getPropertyValue('--position');
+    const sliderInputPosition = parseFloat(sliderInput.value);
+    console.log(ValueToPercent(sliderInputPosition));
+    changeSalaryPosition(ValueToPercent(sliderInputPosition));
+    console.log(sliderInputPosition)
+    // const SliderWidth = slider.()
+}
+
+
+sliderInput.addEventListener('input', () => {
+    inputMovePassive();
+})

@@ -5,6 +5,16 @@
 
   @extend %bloc ;
 
+
+    @media(min-width:840px){
+      grid-column: 1 / 3 ;
+      grid-row: 1;
+    }
+
+    @media(min-width:1200px){
+      grid-column: 1 / 5 ;
+      grid-row: 1;
+    }
 }
 
 .navigation{
@@ -14,11 +24,18 @@
   gap: 8px;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: repeat(6, fit-content);
+  @media(min-width:1200px){
+      gap: 4px;
+      grid-template-columns: 1fr ;
+      grid-template-rows: repeat(12, fit-content);
+    }
+
 
 
 
   li{
     list-style: none;
+    background-color: $colorBg;
   }
 
   &__element{
@@ -26,8 +43,15 @@
 
     box-sizing: border-box;
     display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+    flex-direction: column;
+
+
+    @media(min-width:1200px){
+      flex-direction: row;
+      width: 50%;
+      justify-content: space-between;
+    }
+    
     width: 100%;
     height: fit-content;
     padding: 2px 8px;
@@ -36,8 +60,10 @@
     border: none;
 
     p{
+      text-align: left;
+      font-family: $monotypefont;
       z-index: 0;
-      margin: 12px 0;
+      margin:2px 0;
       display: inline-block;
       color: $white;
       pointer-events: none;

@@ -27,6 +27,7 @@ body.scrolled {
 
 .slider__container{
   background-color: $colorBg;
+  position : relative;
 
   padding: 20px;
   width: 100%;
@@ -109,8 +110,18 @@ body.scrolled {
   padding: 8px;
   background-color: $darkGray;
   left: var(--position);
-  top: -53px;
   transform: translateX(-50%);
   border-radius: 8px;
+  text-wrap: unset;
 
+}
+
+.Salary__container{
+  top: -55px;
+  width: 96%;
+  height: 40px;
+  left: 2%;
+  position: absolute;
+
+  padding: 0 25px;
 }

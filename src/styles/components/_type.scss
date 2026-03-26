@@ -88,6 +88,10 @@ h2{
   font-weight: 400;
   @include font-title(mono, 0);
   text-transform: uppercase;
+  margin:  $padding_mobile/2 0;
+  @media (min-width:1200){
+    margin:  $padding_desktop/2 0;
+  }
 }
 
 h3{

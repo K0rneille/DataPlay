@@ -2,7 +2,7 @@ import Chart from 'chart.js/auto';
 "use strict";
 
 //bouton de nav
-const navBtn = document.querySelectorAll('button');
+const navBtn = document.querySelectorAll('.navigation__element');
 
 navBtn.forEach(btn => {
     btn.addEventListener('click', navBtnActive );
@@ -417,3 +417,12 @@ if(menuToggle){
 function menuOpen(event){
     menu.classList.toggle("source__list__container--active");
 }
+
+
+//date
+
+const date = new Date();
+
+const currentyear = date.getFullYear();
+const yearfooter = document.querySelector(".dateyear");
+yearfooter.textContent = currentyear;

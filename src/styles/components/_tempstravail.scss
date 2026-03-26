@@ -1,7 +1,7 @@
 .temps__travail{
   position: relative;
-  *{
-    margin: 0
+  *:not(h2){
+    margin: 0;
   }
   @extend %bloc;
 

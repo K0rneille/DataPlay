@@ -3,6 +3,7 @@
   color: $white;
   border: none;
   cursor: pointer;
+  z-index: 1000;
 }
 .source__toggle:hover{
   text-decoration: underline;
@@ -16,6 +17,10 @@
   gap: $rem;
   right: 0;
   top: -110px;
+  
+  li{
+    pointer-events: none;
+  }
   
   @extend%bloc  
 }
@@ -33,6 +38,9 @@
 .source__list__container--active{
   transition: opacity .4s;
   opacity: 100%;
+  li{
+    pointer-events: auto;
+  }
 }
 
 .source__listel{

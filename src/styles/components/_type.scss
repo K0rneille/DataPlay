@@ -92,6 +92,7 @@ h2{
 
 h3{
   @include font-title(mono, 2);
+  line-height: 0
 }
 
 strong{

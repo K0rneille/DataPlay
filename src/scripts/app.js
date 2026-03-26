@@ -119,8 +119,8 @@ sliderSalary.addEventListener('focusout', ()=> {
 changerTailleMenu();
 function changerTailleMenu (){
 
+    const navElements = document.querySelectorAll('.navigation__element');
     if (window.innerWidth >= 1200){
-        const navElements = document.querySelectorAll('.navigation__element');
         navElements.forEach((element) => {
             const target = element.firstElementChild.innerHTML.toLowerCase();
             // const result = parseFloat(data [target].rpl);
@@ -141,11 +141,26 @@ function changerTailleMenu (){
         })
 
 
+    } else {
+
+        navElements.forEach((element)=>{
+            const decoration = element.lastElementChild;
+            decoration.style.width = `100%`;
+
+        })
     }
 }
 
 changerTailleMenu()
-
+let resize ;
+window.addEventListener('resize', function(e){
+    clearTimeout(resize);
+    resize = setTimeout(() => {
+        console.log('resize')
+        changerTailleMenu();
+    }, 300)
+}
+)
 // Fetch/DATA
 // Selections des villes
 
@@ -266,8 +281,8 @@ function svgAppear(cityNameParam){
             options: {
                 maintainAspectRatio: false,
                 plugins: {
-                legend: { display: true },
-                tooltip: { enabled: true }
+                legend: { display: false },
+                tooltip: { enabled: false }
                 }
             },
         });
@@ -291,7 +306,7 @@ function svgAppear(cityNameParam){
             options: {
                 maintainAspectRatio: false,
                 plugins: {
-                legend: { display: true },
+                legend: { display: false },
                 tooltip: { enabled: false }
                 }
             },
@@ -313,17 +328,19 @@ function svgAppear(cityNameParam){
                 {
                 label: 'City1',
                 data: [left],
-                backgroundColor: '#e0e0e0',
+                backgroundColor: '#f2f0ef',
+                barThickness: 100,
                 borderWidth: 0,
-                borderRadius: { topLeft: 10, bottomLeft: 10, topRight: 0, bottomRight: 0 },
+                // borderRadius: { topLeft: 20, bottomLeft: 20, topRight: 0, bottomRight: 0 },
                 borderSkipped: false
                 },
                 {
                 label: 'City2',
                 data: [right],
-                backgroundColor: '#333',
+                backgroundColor: '#414141',
+                barThickness: 100,
                 borderWidth: 0,
-                borderRadius: { topLeft: 0, bottomLeft: 0, topRight: 10, bottomRight: 10 },
+                // borderRadius: { topLeft: 0, bottomLeft: 0, topRight: 20, bottomRight: 20 },
                 borderSkipped: false
                 }
             ]
@@ -380,4 +397,23 @@ function svgAppear(cityNameParam){
             });
         }
     });
+}
+
+// sources
+
+const menuToggle = document.querySelector(".source__toggle");
+const menu = document.querySelector(".source__list__container");
+const menuLinks = document.querySelectorAll("a");
+
+
+if(menuToggle){
+    menuToggle.addEventListener("click", menuOpen);
+
+    for (let i = 0; i < menuLinks.length; i++) {
+        menuLinks[i].addEventListener("click", menuOpen);
+    }
+}
+
+function menuOpen(event){
+    menu.classList.toggle("source__list__container--active");
 }

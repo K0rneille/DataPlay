@@ -7,7 +7,9 @@ position: relative;
     max-height: 80px; width: 100%;
   }
 
-
+  &__canva{
+    border-radius: 8px;
+  }
 
   &__text{
     display: flex;
@@ -41,8 +43,10 @@ position: relative;
 }
 .canva__nbr{
   font-weight: 700;
-  color: $colorBg;
+  color: $darkGray;
   @include font-title(mono , 4);
 
-
+  &2{
+    color: $white;
+  }
 }

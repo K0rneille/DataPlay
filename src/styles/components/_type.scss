@@ -87,12 +87,13 @@ h1{
 h2{
   font-weight: 400;
   @include font-title(mono, 0);
-  text-transform: uppercase
+  text-transform: uppercase;
 }
 
 h3{
   @include font-title(mono, 2);
-  line-height: 0
+  line-height: 0;
+  color: $transparentText;
 }
 
 strong{

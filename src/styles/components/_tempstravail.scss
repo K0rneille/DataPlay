@@ -67,6 +67,10 @@
     margin: 20px
   }
 
+  p{
+    color: $transparentText;
+  }
+
 }
 
 .canva__day{
@@ -76,6 +80,7 @@
   transform: translateX(-50%);
   top: 59%;
   font-family: $monotypefont;
+  color: $transparentText;
   
   font-size: remscale(5);
 

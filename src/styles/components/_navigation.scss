@@ -23,11 +23,11 @@
   display: grid;
   gap: 8px;
   grid-template-columns: 1fr 1fr;
-  grid-template-rows: repeat(6);
+  grid-template-rows: repeat(6,1fr);
   @media(min-width:1200px){
       gap: 4px;
       grid-template-columns: 1fr ;
-      grid-template-rows: repeat(12);
+      grid-template-rows: repeat(12, 1fr);
     }
 
 

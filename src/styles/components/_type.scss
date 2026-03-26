@@ -89,7 +89,7 @@ h2{
   @include font-title(mono, 0);
   text-transform: uppercase;
   margin:  $padding_mobile/2 0;
-  @media (min-width:1200){
+  @media (min-width:1200px){
     margin:  $padding_desktop/2 0;
   }
 }
